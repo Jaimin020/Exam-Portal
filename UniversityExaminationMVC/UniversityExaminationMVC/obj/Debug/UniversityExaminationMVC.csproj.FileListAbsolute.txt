@@ -375,3 +375,4 @@ D:\Git\Exam-Portal\UniversityExaminationMVC\UniversityExaminationMVC\obj\Debug\U
 D:\Git\Exam-Portal\UniversityExaminationMVC\UniversityExaminationMVC\obj\Debug\UniversityExaminationMVC.dll
 D:\Git\Exam-Portal\UniversityExaminationMVC\UniversityExaminationMVC\obj\Debug\UniversityExaminationMVC.pdb
 D:\Git\Exam-Portal\UniversityExaminationMVC\UniversityExaminationMVC\obj\Debug\UniversityExaminationMVC.Migrations.Update13.resources
+C:\Users\hp\OneDrive\Documents\GitHub\Exam-Portal\UniversityExaminationMVC\UniversityExaminationMVC\obj\Debug\UniversityExaminationMVC.Migrations.Update13.resources
