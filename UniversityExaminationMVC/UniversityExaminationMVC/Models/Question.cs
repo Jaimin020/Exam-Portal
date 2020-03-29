@@ -17,6 +17,7 @@ namespace UniversityExaminationMVC.Models
             public int Marks { get; set; }
             [Required]
             public string Answer { get; set; }
+
             public string Hint { get; set; }
             [Required]
             public string Subject_Id { get; set; }
