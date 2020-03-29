@@ -4,5 +4,8 @@
     Layout = "~/Views/Shared/_LayoutPage_Student.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Index
+    @Session["UserID"]
+    @Session["UserName"]
+    </h2>
 

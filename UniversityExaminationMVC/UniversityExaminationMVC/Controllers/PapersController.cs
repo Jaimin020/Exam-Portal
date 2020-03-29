@@ -53,9 +53,10 @@ namespace UniversityExaminationMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                Session["id"] = paper.Id;
+                
                 db.Papers.Add(paper);
                 db.SaveChanges();
+                Session["id"] = paper.Id;
                 return RedirectToAction("AddQuestion",new { sid = db.Subjects.Find(int.Parse(paper.Subject_Id)).Id });
             }
 

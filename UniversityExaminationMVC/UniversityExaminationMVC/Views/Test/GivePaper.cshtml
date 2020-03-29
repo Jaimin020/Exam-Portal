@@ -1,0 +1,47 @@
+﻿@using UniversityExaminationMVC.Models
+@{
+    ViewBag.Title = "GivePaper";
+    Layout = "~/Views/Shared/_LayoutPage_Student.cshtml";
+}
+
+<h2>GivePaper</h2>
+<form method="post">
+
+    <div class="accordion" id="accordionExample">
+        @{int i = 1;
+            }
+        @foreach (Question ex in ViewBag.Questions)
+        {
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="">
+                        <span class="badge badge-light">@i</span>
+                        <button class="text-dark h1 btn btn-link" type="button" data-toggle="collapse" data-target="#@ex.QuestionId" aria-expanded="false" aria-controls="@ex.QuestionId">
+                            @ex.Description
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            Marks <span class="badge badge-light">@ex.Marks</span>
+                            <span class="sr-only"></span>
+                        </button>
+
+                    </h2>
+
+                </div>
+
+                <div id="@ex.QuestionId" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body text-info">
+                        Write Your Answer<br>
+                        <textarea class="form-control" id="@ex.QuestionId" name="@ex.QuestionId" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            i += 1;
+        }
+
+
+
+    </div>
+    <br>
+    <button type="submit" class="btn btn-dark">Submit</button>
+</form>
