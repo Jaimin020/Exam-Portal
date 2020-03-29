@@ -33,6 +33,7 @@ namespace UniversityExaminationMVC.Models
         public virtual DbSet<ExamPaper> ExamPapers { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<PaperScore> PaperScores { get; set; }
     }
 
     //public class MyEntity

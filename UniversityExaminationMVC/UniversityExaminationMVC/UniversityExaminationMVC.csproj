@@ -241,6 +241,10 @@
     <Compile Include="Migrations\202003291231371_Update121.Designer.cs">
       <DependentUpon>202003291231371_Update121.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003291620599_Update13.cs" />
+    <Compile Include="Migrations\202003291620599_Update13.Designer.cs">
+      <DependentUpon>202003291620599_Update13.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\CheckModel.cs" />
@@ -251,6 +255,7 @@
     <Compile Include="Models\ExamPaper.cs" />
     <Compile Include="Models\Faculty.cs" />
     <Compile Include="Models\PaperQuestion.cs" />
+    <Compile Include="Models\PaperScore.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Paper.cs" />
     <Compile Include="Models\Student.cs" />
@@ -386,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003291231371_Update121.resx">
       <DependentUpon>202003291231371_Update121.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003291620599_Update13.resx">
+      <DependentUpon>202003291620599_Update13.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
