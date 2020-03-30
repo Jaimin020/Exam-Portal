@@ -53,11 +53,11 @@ namespace UniversityExaminationMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                paper.Faculty_Id = (int)Session["UserID"];
                 db.Papers.Add(paper);
                 db.SaveChanges();
                 Session["id"] = paper.Id;
-                return RedirectToAction("AddQuestion",new { sid = db.Subjects.Find(int.Parse(paper.Subject_Id)).Id });
+                return RedirectToAction("AddQuestion",new { sid = db.Subjects.Find(paper.Subject_Id).Id });
             }
 
             return View(paper);
@@ -69,7 +69,7 @@ namespace UniversityExaminationMVC.Controllers
             List<Question> Qns = db.Questions.Select(x => x).ToList();
             foreach(var i in Qns)
             {
-                if(int.Parse(i.Subject_Id)==sid)
+                if(i.Subject_Id==sid)
                 {
                     list.Add(new CheckModel { Name = i.Description, Id = i.QuestionId, check = false });
                 }

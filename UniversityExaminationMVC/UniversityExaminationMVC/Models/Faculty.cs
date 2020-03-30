@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -24,12 +25,11 @@ namespace UniversityExaminationMVC.Models
         public int Add_Faculty(string name,string branch,string EQ,string email,string password,string Dob)
         {
             f.Name = name;
-            f.Branch = branch;
             f.EducationalQualifications = EQ;
             f.Email = email;
             f.Password = password;
             f.DOB = Dob;
-
+            f.BranchId = 1;
             try
             {
                 db.Facultys.Add(f);
@@ -68,9 +68,12 @@ namespace UniversityExaminationMVC.Models
         public int Id { get; set; }
         
         public string Name { get; set; }
-       
-        public string Branch { get; set; }
-        
+
+        [ForeignKey("Branch")]
+        public int BranchId { get; set; }
+
+        public virtual Branch Branch { get; set; }
+
         public string EducationalQualifications { get; set; }
         [Required]
         public string Email { get; set; }

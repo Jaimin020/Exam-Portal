@@ -20,13 +20,13 @@ namespace UniversityExaminationMVC.Models
             return View();
         }
         [HttpPost]
-        public ActionResult CreateExam(string type,int sem,string brch,DateTime date)
+        public ActionResult CreateExam(string type,int sem,int brch,DateTime date)
         {
             int id;
-            Exam_Work ew = new Exam_Work(type,sem.ToString(),brch,date.ToString());
+            Exam_Work ew = new Exam_Work(type,sem.ToString(),brch,date);
             id=ew.Create_Exam();
             Session["eid"] = id;
-            return RedirectToAction("Add_Paper");
+            return RedirectToAction("DashBoard");
         }
         [HttpGet]
         public ActionResult Add_Paper()
@@ -44,7 +44,7 @@ namespace UniversityExaminationMVC.Models
             {
                 if (i.check == true)
                 {
-                    db.ExamPapers.Add(new ExamPaper { ExamId = (int)Session["eid"], PaperId = i.Id });
+                  //  db.ExamPapers.Add(new ExamPaper { ExamId = (int)Session["eid"], PaperId = i.Id });
                 }
             }
             db.SaveChanges();

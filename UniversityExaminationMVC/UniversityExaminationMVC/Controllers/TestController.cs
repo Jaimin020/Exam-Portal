@@ -35,15 +35,17 @@ namespace UniversityExaminationMVC.Controllers
         public ActionResult UpcomingExam()
         {
             Authorize();
-            string date = DateTime.Now.Date.ToString();
+            DateTime date = DateTime.Now.Date;
             ViewBag.Date = date;
             List<Exam> exa = db.Exams.Where(x => true).ToList();
             List<Exam> exams = new List<Exam>();
             DateTime exdate;
             foreach (Exam x in exa)
             {
-
-                exams.Add(x);
+                if (DateTime.Compare(DateTime.Now, x.date) < 0)
+                {
+                    exams.Add(x);
+                }
             }
             ViewBag.upExams = exams;
             List<Paper> papers = new List<Paper>();

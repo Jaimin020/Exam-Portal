@@ -22,7 +22,7 @@ namespace UniversityExaminationMVC.Controllers
             {
                 Session["UserType"] = "Student";
                 Session["UserID"] = user.Id;
-                Session["UserName"] = user.Name.ToUpper();
+                Session["UserName"] = user.Name;
                 return RedirectToAction("index", "Test");
             }
             else
@@ -32,7 +32,7 @@ namespace UniversityExaminationMVC.Controllers
                 {
                     Session["UserType"] = "Faculty";
                     Session["UserID"] = user1.Id;
-                    Session["UserName"] = user1.Name.ToUpper();
+                    Session["UserName"] = user1.Name;
                     return RedirectToAction("DashBoard", "Examination");
                 }
             }
