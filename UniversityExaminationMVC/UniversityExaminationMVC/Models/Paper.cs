@@ -12,7 +12,6 @@ namespace UniversityExaminationMVC.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [Column(TypeName = "Date")]
         public DateTime paperDate{get;set;}
         [Required]
         public string Name { get; set; }
