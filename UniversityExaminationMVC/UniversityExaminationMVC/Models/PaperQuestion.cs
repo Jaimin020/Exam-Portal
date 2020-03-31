@@ -9,10 +9,10 @@ namespace UniversityExaminationMVC.Models
 {
     public class PaperQuestion
     {
-            [Key, Column(Order = 1)]
-            public int PaperId { get; set; }
-            [Key, Column(Order = 2)]
-            public int QuestionId { get; set; }
+        [Key, Column(Order = 1)]
+        public int PaperId { get; set; }
+        [Key, Column(Order = 2)]
+        public int QuestionId { get; set; }
 
     }
 }

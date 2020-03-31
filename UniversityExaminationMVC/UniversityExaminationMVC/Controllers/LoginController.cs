@@ -20,6 +20,9 @@ namespace UniversityExaminationMVC.Controllers
             Student user = db.Students.SingleOrDefault(x => x.Email == email);
             if(user!=null && user.Password==password)
             {
+                Session["UserType"] = "Student";
+                Session["UserID"] = user.Id;
+                Session["UserName"] = user.Name;
                 return RedirectToAction("index", "Test");
             }
             else
@@ -27,6 +30,9 @@ namespace UniversityExaminationMVC.Controllers
                 Faculty user1 = db.Facultys.SingleOrDefault(x => x.Email == email);
                 if (user1 != null && user1.Password == password)
                 {
+                    Session["UserType"] = "Faculty";
+                    Session["UserID"] = user1.Id;
+                    Session["UserName"] = user1.Name;
                     return RedirectToAction("DashBoard", "Examination");
                 }
             }
@@ -53,11 +59,9 @@ namespace UniversityExaminationMVC.Controllers
         }
         public ActionResult LogOut()
         {
-            if (Session["User"].ToString() == "student")
-            {
-                Session.Remove("Student");
-            }
-            Response.Redirect("Home");
+            Session.RemoveAll();
+            Session.Abandon();
+            Response.Redirect("/Login");
             return View();
         }
     }

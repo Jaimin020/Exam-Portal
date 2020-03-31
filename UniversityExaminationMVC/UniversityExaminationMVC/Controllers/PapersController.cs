@@ -49,14 +49,17 @@ namespace UniversityExaminationMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,paperDate,Name,Description,isPublic,Subject_Id")] Paper paper)
+        public ActionResult Create([Bind(Include = "Id,paperDate,Name,Description,isPublic,Subject_Id,Duration")] Paper paper,FormCollection form)
         {
             if (ModelState.IsValid)
             {
-                Session["id"] = paper.Id;
+                paper.Faculty_Id = (int)Session["UserID"];
+                paper.paperDate= paper.paperDate.AddHours(Double.Parse( form["timehours"]));
+                paper.paperDate = paper.paperDate.AddMinutes(Double.Parse(form["timeminutes"]));
                 db.Papers.Add(paper);
                 db.SaveChanges();
-                return RedirectToAction("AddQuestion",new { sid = db.Subjects.Find(int.Parse(paper.Subject_Id)).Id });
+                Session["id"] = paper.Id;
+                return RedirectToAction("AddQuestion",new { sid = db.Subjects.Find(paper.Subject_Id).Id });
             }
 
             return View(paper);
@@ -68,7 +71,7 @@ namespace UniversityExaminationMVC.Controllers
             List<Question> Qns = db.Questions.Select(x => x).ToList();
             foreach(var i in Qns)
             {
-                if(int.Parse(i.Subject_Id)==sid)
+                if(i.Subject_Id==sid)
                 {
                     list.Add(new CheckModel { Name = i.Description, Id = i.QuestionId, check = false });
                 }

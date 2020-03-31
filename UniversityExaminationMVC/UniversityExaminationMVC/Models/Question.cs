@@ -19,12 +19,16 @@ namespace UniversityExaminationMVC.Models
             public string Answer { get; set; }
 
             public string Hint { get; set; }
-            [Required]
-            public string Subject_Id { get; set; }
-            
-            public virtual Faculty faculty { get; set; }
+
+            [ForeignKey("Subject")]
+            public int Subject_Id { get; set; }
+            public virtual Subject Subject { get; set; }
+
+        [ForeignKey("Faculty")]
+        public int Faculty_Id { get; set; }
+        public virtual Faculty Faculty { get; set; }
            
-            public virtual ICollection<PaperQuestion> PaperQuestions { get; set; }
+          //  public virtual ICollection<PaperQuestion> PaperQuestions { get; set; }
         
     }
 }

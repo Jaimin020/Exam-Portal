@@ -53,6 +53,7 @@ namespace UniversityExaminationMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                question.Faculty_Id =(int)Session["UserID"];
                 db.Questions.Add(question);
                 db.SaveChanges();
                 return RedirectToAction("Index");

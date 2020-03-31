@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -29,6 +30,7 @@ namespace UniversityExaminationMVC.Models
             s.Sem = Sem;
             s.Email = Email;
             s.Phone = phone;
+            s.BranchId = 1;
             s.Branch = null;
             try
             {
@@ -70,6 +72,9 @@ namespace UniversityExaminationMVC.Models
         public string Email { get; set; }
         
         public string Phone { get; set; }
+
+        [ForeignKey("Branch")]
+        public int BranchId { get; set; }
 
         public virtual Branch Branch { get; set; }
     }

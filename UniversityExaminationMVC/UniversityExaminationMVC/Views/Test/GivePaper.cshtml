@@ -1,0 +1,102 @@
+﻿@using UniversityExaminationMVC.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>GivePaper</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="text/javascript" language="JavaScript">
+      
+        function toggleFullScreen(elem) {
+            // ## The below if statement seems to work better ## if ((document.fullScreenElement && document.fullScreenElement !== null) || (document.msfullscreenElement && document.msfullscreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+            if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
+                if (elem.requestFullScreen) {
+                    elem.requestFullScreen();
+                } else if (elem.mozRequestFullScreen) {
+                    elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullScreen) {
+                    elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            } else {
+                if (document.cancelFullScreen) {
+                    document.cancelFullScreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+    </script>
+</head>
+<body >
+
+    <div class="container" style="background-color:rgb(85, 122, 149) " >
+
+        <h2>GivePaper</h2>
+        
+        <form method="post">
+
+            <div class="accordion" id="accordionExample">
+                @{int i = 1;
+                }
+                @foreach (Question ex in ViewBag.Questions)
+                {
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="">
+                                <span class="badge badge-light">@i</span>
+                                <button class="text-dark h1 btn btn-link" type="button" data-toggle="collapse" data-target="#@ex.QuestionId" aria-expanded="false" aria-controls="@ex.QuestionId">
+                                    @ex.Description
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    Marks <span class="badge badge-light">@ex.Marks</span>
+                                    <span class="sr-only"></span>
+                                </button>
+
+                            </h2>
+
+                        </div>
+
+                        <div id="@ex.QuestionId" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body text-info">
+                                Write Your Answer<br>
+                                <textarea class="form-control" id="@ex.QuestionId" name="@ex.QuestionId" rows="3" onpaste="return false;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    i += 1;
+                }
+
+
+
+            </div>
+            <br>
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+
+    </div>
+    <script type="text/javascript" language="JavaScript">
+ 
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
