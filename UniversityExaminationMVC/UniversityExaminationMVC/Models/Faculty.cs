@@ -33,6 +33,7 @@ namespace UniversityExaminationMVC.Models
             try
             {
                 db.Facultys.Add(f);
+                db.SaveChanges();
                 return 1;
             }
 
