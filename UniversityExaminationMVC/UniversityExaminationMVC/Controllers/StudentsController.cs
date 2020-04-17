@@ -84,7 +84,7 @@ namespace UniversityExaminationMVC.Controllers
             {
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Response.Redirect("/Login");
             }
             return View(student);
         }
