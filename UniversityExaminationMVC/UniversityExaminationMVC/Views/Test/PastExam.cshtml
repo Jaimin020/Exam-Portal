@@ -5,31 +5,8 @@
 }
 
 
-<h2>Past Exams</h2>
 @ViewBag.Date
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Exam ex in ViewBag.upExams)
-        {
-            <tr>
-                <th scope="row">@ex.date</th>
-                <td>@ex.Name</td>
-                <td>@ex.type</td>
-                <td></td>
-            </tr>
 
-        }
-
-    </tbody>
-</table>
 <h2>Past Papers</h2>
 
 <table class="table table-striped">
@@ -50,7 +27,7 @@
                 <td>@ex.Name</td>
                 <td>@ex.Subject.Name</td>
                 <td>
-                    <a href="#"class="btn btn-dark">
+                    <a href="~/Test/ViewResult/@ex.Id"class="btn btn-dark">
                         ViewResult
                     </a>
                 </td>

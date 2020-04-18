@@ -238,6 +238,9 @@
     <Content Include="Views\Examination\Check.cshtml" />
     <Content Include="Views\Examination\StudentList.cshtml" />
     <Content Include="Views\Examination\Checking.cshtml" />
+    <Content Include="Views\Test\ViewResult.cshtml" />
+    <Content Include="Views\Test\ExamResult.cshtml" />
+    <Content Include="Views\Test\Result.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

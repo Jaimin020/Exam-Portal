@@ -1,0 +1,24 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "ViewResult";
+    Layout = "~/Views/Shared/_LayoutPage_Student.cshtml";
+}
+
+@if (ViewBag.PaperScore != null)
+{
+
+    <h4>Paper Name: @ViewBag.Paper.Name</h4>
+    <h4>@ViewBag.Paper.Description</h4>
+    <h4>Duration: @ViewBag.Paper.Duration Minutes</h4>
+    <h4>Date: @ViewBag.Paper.paperDate</h4>
+    <h4>Marks: @ViewBag.PaperScore.Marks</h4>
+
+
+}
+else
+{
+    <h2 class="text-danger"> @ViewBag.error</h2>
+}
+

@@ -1,0 +1,36 @@
+﻿@using UniversityExaminationMVC.Models
+@{
+    ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_LayoutPage_Student.cshtml";
+}
+
+<h2>Exams</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Exam ex in ViewBag.upExams)
+        {
+            <tr>
+                <th scope="row">@ex.date</th>
+                <td>@ex.Name</td>
+                <td>@ex.type</td>
+                <td>
+                    <a href="~/Test/ExamResult/@ex.Exam_Id" class="btn btn-dark">
+                        ViewResult
+                    </a>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
 using UniversityExaminationMVC.Models;
 
@@ -185,6 +183,59 @@ namespace UniversityExaminationMVC.Controllers
             Response.Redirect("/Test/CloseWindow");
             return View();
         }
+
+        public ActionResult ViewResult(int id) {
+
+            int stuid = (int)Session["UserId"];
+            PaperScore ps= db.PaperScores.Where(x => x.Paper_Id == id && x.Student_Id == stuid).SingleOrDefault();
+            Paper p = db.Papers.Where(x => x.Id == id).SingleOrDefault();
+
+            if (ps != null)
+            {
+                ViewBag.PaperScore = ps;
+                ViewBag.Paper=p;
+            }
+            else {
+                ViewBag.error = "You Have Not Attended This Paper";
+            }
+
+            return View();
+        }
+        public ActionResult Result() {
+             List<Exam> exa = db.Exams.Where(x => true).ToList();
+            ViewBag.upExams = exa;
+            return View();
+
+        }
+
+        public ActionResult ExamResult(int id) {
+
+            Exam ex=db.Exams.Where(x => x.Exam_Id == id).SingleOrDefault();
+            if (ex != null)
+            {
+                int exid = ex.Exam_Id;
+                List<Paper> lipaper = db.Papers.Where(x => x.exam.Exam_Id == exid).ToList();
+                List < PaperScore > lips= new List<PaperScore>();
+                int usid = (int)Session["UserId"];
+                foreach (Paper p in lipaper) {
+
+                   PaperScore ps=db.PaperScores.Where(x => x.Paper_Id == p.Id &&x.Student_Id==usid).SingleOrDefault();
+                    if (ps != null) {
+                        lips.Add(ps);
+                    }
+                }
+
+                ViewBag.Exam = ex;
+                ViewBag.Papers = lipaper;
+                ViewBag.PaperScore = lips;
+            }
+            else {
+            }
+            return View();
+        }
+
+
+
         public ActionResult CloseWindow() {
 
             return View();
