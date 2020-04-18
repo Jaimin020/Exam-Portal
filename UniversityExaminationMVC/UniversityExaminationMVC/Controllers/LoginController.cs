@@ -23,7 +23,7 @@ namespace UniversityExaminationMVC.Controllers
                 Session["UserType"] = "Student";
                 Session["UserID"] = user.Id;
                 Session["UserName"] = user.Name;
-                return RedirectToAction("index", "Test");
+                return RedirectToAction("Details", "Students", new { id = Session["UserID"] });
             }
             else
             {
@@ -33,7 +33,7 @@ namespace UniversityExaminationMVC.Controllers
                     Session["UserType"] = "Faculty";
                     Session["UserID"] = user1.Id;
                     Session["UserName"] = user1.Name;
-                    return RedirectToAction("DashBoard", "Examination");
+                    return RedirectToAction("Details", "Faculties", new { id = Session["UserID"] });
                 }
             }
             return View();

@@ -235,6 +235,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Test\PastExam.cshtml" />
     <Content Include="Views\Test\CloseWindow.cshtml" />
+    <Content Include="Views\Examination\Check.cshtml" />
+    <Content Include="Views\Examination\StudentList.cshtml" />
+    <Content Include="Views\Examination\Checking.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

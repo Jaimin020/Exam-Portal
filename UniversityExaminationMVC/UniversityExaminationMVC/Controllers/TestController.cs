@@ -169,10 +169,10 @@ namespace UniversityExaminationMVC.Controllers
 
             string Submition = "";
             foreach (Question ans in ViewBag.Questions) {
-                Submition += ans.Description + "/n";
+                Submition += ans.Description + "$";
 
                 string anss = collection[ans.QuestionId.ToString()];
-                Submition += anss + "/n/n/n";
+                Submition += anss + "$";
 
                 
             }

@@ -15,7 +15,7 @@ namespace UniversityExaminationMVC.Models
         public string Email;
         public string DOB;
         public Faculty f;
-        public DataModelContext db;
+        public static DataModelContext db=new DataModelContext();
 
         public Faculty_Work()
         {
